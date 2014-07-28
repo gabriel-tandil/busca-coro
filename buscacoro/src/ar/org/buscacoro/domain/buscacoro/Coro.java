@@ -18,33 +18,20 @@ import org.openxava.annotations.*;
 @Entity(name = "Coro")
 @Table(name = "coro")
 @Views({
-		@View(name = "base", members = "" + "id  ; " + "ciudad  ; "
-				+ "nombre  ; " + "tipo  ; " + "detalle  ; " + "web  ; "
-				+ "email  ; " + "contacto  ; " + "demo  ; " + "material  ; "
-				+ "activo  ; " + "modificacion  ; " + "desde  ; " + "hasta  ; "),
-
+		@View(name = "base", members=
+				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }"),
 		@View(name = "Create", extendsView = "base"),
 		@View(name = "Update", extendsView = "base", members = ""),
 		@View(name = "DEFAULT", extendsView = "base", members = ""),
-		@View(name = "coroDEFAULT_VIEW", members = " id ;" + "nombre  ; "
-				+ "detalle  ; " + "web  ; " + "email  ; " + "contacto  ; "
-				+ "demo  ; " + "material  ; " + "activo  ; "
-				+ "modificacion  ; " + "desde  ; " + "hasta  ; "),
+		@View(name = "coroDEFAULT_VIEW", members=
+				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }"),
 		@View(name = "reference", extendsView = "coroDEFAULT_VIEW"
 
 		) })
 @Tabs({
-		@Tab(properties = " nombre " + ",  detalle " + ",  web " + ",  email "
-				+ ",  contacto " + ",  demo " + ",  material " + ",  activo "
-				+ ",  modificacion " + ",  desde " + ",  hasta "),
-		@Tab(name = "CoroTab", properties = " nombre " + ",  detalle "
-				+ ",  web " + ",  email " + ",  contacto " + ",  demo "
-				+ ",  material " + ",  activo " + ",  modificacion "
-				+ ",  desde " + ",  hasta "),
-		@Tab(name = "CoroTabWithRef", properties = " nombre " + ",  detalle "
-				+ ",  web " + ",  email " + ",  contacto " + ",  demo "
-				+ ",  material " + ",  activo " + ",  modificacion "
-				+ ",  desde " + ",  hasta ") })
+		@Tab(properties = "ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre"),
+		@Tab(name = "CoroTab", properties="ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre"),
+		@Tab(name = "CoroTabWithRef", properties="ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre") })
 public class Coro {
 
 	@Column(name = "activo", nullable = false, unique = false)
