@@ -1,0 +1,81 @@
+<controllers> 
+
+	<controller name="MpTypical">
+	
+	  <extends controller="Typical" />
+    
+      <action  name="new" 
+			class="net.sf.minuteproject.openxava.view.CreateAction"
+			image="images/new.gif"
+			keystroke="Control N">
+			<set property="restoreModel" value="true"/>			
+	  </action>
+		
+      <action name="searchByViewKey"
+          by-default="if-possible" hidden="true"
+          class="net.sf.minuteproject.openxava.view.UpdateAction"
+          keystroke="F8" >
+      </action>
+      
+	</controller>		
+
+	<controller name="MpSearchAndPrint">
+		<extends controller="Print" />
+		<extends controller="MpSearchOnly" />
+	</controller>
+  	
+	<controller name="MpSearchOnly">
+
+		<action name="search" mode="detail"
+			class="org.openxava.actions.SearchAction" image="images/find.gif"
+			keystroke="control B">
+		</action>
+
+		<action name="searchByViewKey" hidden="true" 
+			class="org.openxava.actions.SearchByViewKeyAction">
+			<use-object name="xava_view" />
+		</action>
+
+		<action name="searchReadOnly" hidden="true" 
+			class="org.openxava.actions.SearchReadOnlyAction">
+			<use-object name="xava_view" />
+		</action>
+		
+	</controller>
+
+
+    <!-- statement driven development SDD -->
+    <!-- transfer entities -->
+    <!-- store procedure input-->
+
+
+
+</controllers><!--
+	 Copyright (c) minuteproject, minuteproject@gmail.com
+	 All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+	 
+	 More information on minuteproject:
+	 twitter @minuteproject
+	 wiki http://minuteproject.wikispaces.com 
+	 blog http://minuteproject.blogspot.net
+	 
+-->
+<!--
+	 template reference : 
+	 - Minuteproject version : 0.8.7
+	 - name      : ControllersXmlOX
+	 - file name : ControllersXmlOX.vm
+	 - time      : 2014/07/25 AD at 12:01:13 ART
+-->

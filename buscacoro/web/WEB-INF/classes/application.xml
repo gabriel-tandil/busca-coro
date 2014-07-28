@@ -1,0 +1,87 @@
+<application name="buscacoro"> 
+	
+	<!-- 
+	A default module for each entity is assumed with the
+	controllers on <default-module/>
+	-->
+	
+	<default-module>		  
+		<controller name="Typical"/>
+	</default-module>
+	
+   <!-- entity : ciudad -->
+  <module name="Ciudad">
+	  <model name="Ciudad"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+   <!-- entity : coro -->
+  <module name="Coro">
+	  <model name="Coro"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+   <!-- entity : pais -->
+  <module name="Pais">
+	  <model name="Pais"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+   <!-- entity : provincia -->
+  <module name="Provincia">
+	  <model name="Provincia"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+   <!-- entity : recurso -->
+  <module name="Recurso">
+	  <model name="Recurso"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+   <!-- entity : tipo -->
+  <module name="Tipo">
+	  <model name="Tipo"/>  
+	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
+	  <controller name="MpTypical"/>
+	</module>	
+
+    <!-- statement driven development SDD -->
+
+	<!-- transfer entities -->
+
+	<!-- functions -->
+		
+
+
+</application>
+
+<!--
+	 Copyright (c) minuteproject, minuteproject@gmail.com
+	 All rights reserved.
+	 
+	 Licensed under the Apache License, Version 2.0 (the "License")
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 
+	 http://www.apache.org/licenses/LICENSE-2.0
+	 
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+	 
+	 More information on minuteproject:
+	 twitter @minuteproject
+	 wiki http://minuteproject.wikispaces.com 
+	 blog http://minuteproject.blogspot.net
+	 
+-->
+<!--
+	 template reference : 
+	 - Minuteproject version : 0.8.7
+	 - name      : ApplicationXml
+	 - file name : ApplicationXmlOX.vm
+	 - time      : 2014/07/25 AD at 12:01:13 ART
+-->
