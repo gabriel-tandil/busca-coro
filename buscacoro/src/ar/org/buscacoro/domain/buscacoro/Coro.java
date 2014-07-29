@@ -18,11 +18,11 @@ import org.openxava.annotations.*;
 @Entity(name = "Coro")
 @Table(name = "coro")
 @Views({
-		@View(name = "base", members=
+		@View(members=
 				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")
 		 })
 @Tabs({
-		@Tab(properties = "nombre, ciudad.nombre"),
+		@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre,ciudad.nombre"),
 		@Tab(name = "CoroTab", properties="nombre") })
 public class Coro {
 
