@@ -29,7 +29,7 @@ if (request.getAttribute("style") == null) {
        <b>Exception:</b><br> 
        <font color="red"><%= exception.toString() %></font>
     	<h3>
-        Error on buscacoro OpenXava application. <a href="<%=request.getContextPath()%>/xava/homeMenu.jsp">Back to menus</a>
+        Error on buscacoro OpenXava application. <a href="<%=request.getContextPath()%>">Back to menus</a>
     	</h3>
 	</div>
 	<div id="content">
