@@ -13,25 +13,17 @@ import org.openxava.annotations.*;
  * <p>
  * Description: Domain Object describing a Coro entity
  * </p>
- * 
+ * ********* 
  */
 @Entity(name = "Coro")
 @Table(name = "coro")
 @Views({
 		@View(name = "base", members=
-				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }"),
-		@View(name = "Create", extendsView = "base"),
-		@View(name = "Update", extendsView = "base", members = ""),
-		@View(name = "DEFAULT", extendsView = "base", members = ""),
-		@View(name = "coroDEFAULT_VIEW", members=
-				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }"),
-		@View(name = "reference", extendsView = "coroDEFAULT_VIEW"
-
-		) })
+				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")
+		 })
 @Tabs({
-		@Tab(properties = "ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre"),
-		@Tab(name = "CoroTab", properties="ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre"),
-		@Tab(name = "CoroTabWithRef", properties="ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, nombre") })
+		@Tab(name = "base", properties = "nombre, ciudad.nombre"),
+		@Tab(name = "CoroTab", properties="nombre") })
 public class Coro {
 
 	@Column(name = "activo", nullable = false, unique = false)
@@ -48,9 +40,8 @@ public class Coro {
 	// remove optional=false to aggragate but leads to a side effect when going
 	// directly to the entity: required check is not performed=> if no set DB
 	// check constraint is raised...
-	@JoinColumn(name = "ciudad", nullable = false, unique = false)
+	@JoinColumn(name = "ciudad", referencedColumnName = "id", nullable = false, unique = false)
 	@DescriptionsList(depends="provincia, pais", condition="${provincia.id} = ? and ${provincia.pais.id} = ? ")	
-	@ReferenceView("reference")
 	private Ciudad ciudad;
 
 	@Column(name = "contacto", length = 100, nullable = false, unique = false)
@@ -81,8 +72,8 @@ public class Coro {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-
+	private int id;
+	
 	@Column(name = "material", nullable = false, unique = false)
 	@Required
 	private Boolean material;
@@ -101,15 +92,12 @@ public class Coro {
 	// directly to the entity: required check is not performed=> if no set DB
 	// check constraint is raised...
 	@JoinColumn(name = "tipo", referencedColumnName = "id", nullable = false, unique = false)
-	@ReferenceView("reference")
 	private Tipo tipo;
 
 	@Column(name = "web", length = 250, nullable = false, unique = false)
 	@Required
 	private String web;
 
-	// children
-	// m2m
 	/**
 	 * Default constructor
 	 */
@@ -154,7 +142,7 @@ public class Coro {
 		return hasta;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -218,7 +206,7 @@ public class Coro {
 		this.hasta = hasta;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

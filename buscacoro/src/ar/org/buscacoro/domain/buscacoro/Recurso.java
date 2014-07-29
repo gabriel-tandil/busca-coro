@@ -56,7 +56,6 @@ public class Recurso {
 	// directly to the entity: required check is not performed=> if no set DB
 	// check constraint is raised...
 	@JoinColumn(name = "ciudad", referencedColumnName = "id", nullable = false, unique = false)
-	@ReferenceView("reference")
 	private Ciudad ciudad;
 
 	@Column(name = "contacto", length = 100, nullable = false, unique = false)
@@ -87,7 +86,7 @@ public class Recurso {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private int id;
 
 	@Column(name = "material", nullable = false, unique = false)
 	@Required
@@ -146,7 +145,7 @@ public class Recurso {
 		return hasta;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -206,7 +205,7 @@ public class Recurso {
 		this.hasta = hasta;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

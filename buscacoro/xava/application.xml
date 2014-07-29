@@ -9,42 +9,7 @@
 		<controller name="Typical"/>
 	</default-module>
 	
-   <!-- entity : ciudad -->
-  <module name="Ciudad">
-	  <model name="Ciudad"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
-   <!-- entity : coro -->
-  <module name="Coro">
-	  <model name="Coro"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
-   <!-- entity : pais -->
-  <module name="Pais">
-	  <model name="Pais"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
-   <!-- entity : provincia -->
-  <module name="Provincia">
-	  <model name="Provincia"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
-   <!-- entity : recurso -->
-  <module name="Recurso">
-	  <model name="Recurso"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
-   <!-- entity : tipo -->
-  <module name="Tipo">
-	  <model name="Tipo"/>  
-	  <env-var name="XAVA_SEARCH_ACTION" value="MpTypical.searchByViewKey"/>
-	  <controller name="MpTypical"/>
-	</module>	
+  
 
     <!-- statement driven development SDD -->
 
