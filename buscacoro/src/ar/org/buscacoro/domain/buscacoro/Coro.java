@@ -58,10 +58,12 @@ public class Coro {
 
 	@Column(name = "detalle", length = 500, nullable = false, unique = false)
 	@Required
+    @Stereotype("TEXT_AREA")	
 	private String detalle;
 
 	@Column(name = "email", length = 100, nullable = false, unique = false)
 	@Required
+    @Stereotype("EMAIL")	
 	private String email;
 
 	@Column(name = "hasta", nullable = true, unique = false)
@@ -91,11 +93,13 @@ public class Coro {
 	// remove optional=false to aggragate but leads to a side effect when going
 	// directly to the entity: required check is not performed=> if no set DB
 	// check constraint is raised...
+	@DescriptionsList
 	@JoinColumn(name = "tipo", referencedColumnName = "id", nullable = false, unique = false)
 	private Tipo tipo;
 
 	@Column(name = "web", length = 250, nullable = false, unique = false)
 	@Required
+    @Stereotype("WEBURL")
 	private String web;
 
 	/**
