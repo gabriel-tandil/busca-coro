@@ -3224,3 +3224,5 @@ body.lfr-has-sidebar {
 	padding-left: 270px;
 	width: auto;
 }
+
+.ui-dialog { clear: both; }
