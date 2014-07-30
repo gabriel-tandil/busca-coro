@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+import ar.org.buscacoro.filters.*;
+
 /**
  * 
  * <p>
@@ -22,8 +24,9 @@ import org.openxava.annotations.*;
 				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")
 		 })
 @Tabs({
-		@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre,ciudad.nombre"),
-		@Tab(name = "CoroTab", properties="nombre") })
+		@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre", editor="ListFiltroSimple",
+			    filter=FiltroSimple.class,
+			    baseCondition="upper(${nombre}||${ciudad.provincia.pais.nombre}||${ciudad.provincia.nombre}||${ciudad.nombre}) like ?")})
 public class Coro {
 
 	@Column(name = "activo", nullable = false, unique = false)

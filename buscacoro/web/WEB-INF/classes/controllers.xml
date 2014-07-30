@@ -1,12 +1,17 @@
 <controllers> 
 
-
+<object name="valorFiltroSimple" class="java.lang.String" value="%"/>
     <!-- statement driven development SDD -->
     <!-- transfer entities -->
     <!-- store procedure input-->
 
 
-
+	<controller name="FiltroSimple">	
+		<extends controller="Typical"/>		
+		        <action name="establecerValor" hidden="true"
+			class="ar.org.buscacoro.actions.FiltroSimpleAction" />
+						
+	</controller>
 </controllers><!--
 	 Copyright (c) minuteproject, minuteproject@gmail.com
 	 All rights reserved.

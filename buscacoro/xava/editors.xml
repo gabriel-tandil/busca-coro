@@ -3,10 +3,9 @@
 <!DOCTYPE editors SYSTEM "dtds/editors.dtd">
  
 <editors>
-
-
-
-
+  
+	<editor name="ListFiltroSimple" url="listEditorFiltroSimple.jsp"/>
+	
 </editors>
 <!--
 	 Copyright (c) minuteproject, minuteproject@gmail.com
