@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+import ar.org.buscacoro.filters.*;
+
 /**
  * 
  * <p>
@@ -18,45 +20,38 @@ import org.openxava.annotations.*;
 @Entity(name = "Recurso")
 @Table(name = "recurso")
 @Views({
-		@View(name = "base", members = "" + "id  ; " + "ciudad  ; "
-				+ "nombre  ; " + "detalle  ; " + "web  ; " + "email  ; "
-				+ "contacto  ; " + "demo  ; " + "material  ; " + "activo  ; "
-				+ "modificacion  ; " + "hasta  ; " + "desde  ; "),
-
-		@View(name = "Create", extendsView = "base"),
-		@View(name = "Update", extendsView = "base", members = ""),
-		@View(name = "DEFAULT", extendsView = "base", members = ""),
-		@View(name = "recursoDEFAULT_VIEW", members = " id ;" + "nombre  ; "
-				+ "detalle  ; " + "web  ; " + "email  ; " + "contacto  ; "
-				+ "demo  ; " + "material  ; " + "activo  ; "
-				+ "modificacion  ; " + "hasta  ; " + "desde  ; "),
-		@View(name = "reference", extendsView = "recursoDEFAULT_VIEW"
-
-		) })
+	@View(members=
+			"general { nombre; pais, provincia, ciudad; detalle; web; email; contacto; recursos [demo, material]; activo } vigencia { desde, hasta }"),
+	@View(name = "consulta",
+		  members=
+	"general { nombre; pais, provincia, ciudad; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")})
 @Tabs({
-		@Tab(properties = " nombre " + ",  detalle " + ",  web " + ",  email "
-				+ ",  contacto " + ",  demo " + ",  material " + ",  activo "
-				+ ",  modificacion " + ",  hasta " + ",  desde "),
-		@Tab(name = "RecursoTab", properties = " nombre " + ",  detalle "
-				+ ",  web " + ",  email " + ",  contacto " + ",  demo "
-				+ ",  material " + ",  activo " + ",  modificacion "
-				+ ",  hasta " + ",  desde "),
-		@Tab(name = "RecursoTabWithRef", properties = " nombre "
-				+ ",  detalle " + ",  web " + ",  email " + ",  contacto "
-				+ ",  demo " + ",  material " + ",  activo "
-				+ ",  modificacion " + ",  hasta " + ",  desde ") })
+	@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, activo", editor="ListFiltroSimple",
+		    filter=FiltroSimple.class,
+		    baseCondition="upper(${nombre}||${ciudad.provincia.pais.nombre}||${ciudad.provincia.nombre}||${ciudad.nombre}) like ?"),
+	@Tab(name = "consulta", properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre", editor="ListFiltroSimple",
+		    filter=FiltroSimple.class,
+		    baseCondition="upper(${nombre}||${ciudad.provincia.pais.nombre}||${ciudad.provincia.nombre}||${ciudad.nombre}) like ?")})
 public class Recurso {
 
 	@Column(name = "activo", nullable = false, unique = false)
 	@Required
 	private Boolean activo;
 
+    @Transient @ManyToOne @DescriptionsList @JoinColumn(name="ciudad.provincia.pais")
+    private Pais pais;   
+
+    @Transient @ManyToOne @DescriptionsList(depends="pais", condition="${pais.id} = ?") @JoinColumn(name="ciudad.provincia")
+    private Provincia provincia;   
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	// remove optional=false to aggragate but leads to a side effect when going
 	// directly to the entity: required check is not performed=> if no set DB
 	// check constraint is raised...
 	@JoinColumn(name = "ciudad", referencedColumnName = "id", nullable = false, unique = false)
+	@DescriptionsList(depends="provincia, pais", condition="${provincia.id} = ? and ${provincia.pais.id} = ? ")	
 	private Ciudad ciudad;
+
 
 	@Column(name = "contacto", length = 100, nullable = false, unique = false)
 	@Required
@@ -72,10 +67,12 @@ public class Recurso {
 
 	@Column(name = "detalle", length = 500, nullable = false, unique = false)
 	@Required
+    @Stereotype("TEXT_AREA")
 	private String detalle;
 
 	@Column(name = "email", length = 100, nullable = false, unique = false)
 	@Required
+    @Stereotype("EMAIL")
 	private String email;
 
 	@Column(name = "hasta", nullable = true, unique = false)
@@ -103,6 +100,7 @@ public class Recurso {
 
 	@Column(name = "web", length = 250, nullable = false, unique = false)
 	@Required
+    @Stereotype("WEBURL")
 	private String web;
 
 	// children
@@ -112,6 +110,12 @@ public class Recurso {
 	 */
 	public Recurso() {
 	}
+	
+	@PostLoad
+	public void establecerPaisYProvincia() {
+		provincia = ciudad.getProvincia();
+		pais = provincia.getPais();
+	}	
 
 	public Boolean getActivo() {
 		return activo;
@@ -223,6 +227,22 @@ public class Recurso {
 
 	public void setWeb(String web) {
 		this.web = web;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 
 }

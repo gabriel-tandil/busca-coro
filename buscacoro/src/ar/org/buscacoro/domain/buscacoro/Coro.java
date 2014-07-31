@@ -21,10 +21,15 @@ import ar.org.buscacoro.filters.*;
 @Table(name = "coro")
 @Views({
 		@View(members=
-				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")
-		 })
+				"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]; activo } vigencia { desde, hasta }"),
+		@View(name = "consulta",
+			  members=
+		"general { nombre; pais, provincia, ciudad; tipo; detalle; web; email; contacto; recursos [demo, material]  } vigencia { desde, hasta }")})
 @Tabs({
-		@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre", editor="ListFiltroSimple",
+		@Tab(properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, tipo.nombre, activo", editor="ListFiltroSimple",
+			    filter=FiltroSimple.class,
+			    baseCondition="upper(${nombre}||${ciudad.provincia.pais.nombre}||${ciudad.provincia.nombre}||${ciudad.nombre}) like ?"),
+		@Tab(name = "consulta", properties = "nombre, ciudad.provincia.pais.nombre, ciudad.provincia.nombre, ciudad.nombre, tipo.nombre", editor="ListFiltroSimple",
 			    filter=FiltroSimple.class,
 			    baseCondition="upper(${nombre}||${ciudad.provincia.pais.nombre}||${ciudad.provincia.nombre}||${ciudad.nombre}) like ?")})
 public class Coro {

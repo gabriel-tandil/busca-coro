@@ -9,7 +9,7 @@
       <a href="<%=request.getContextPath()%>" ><img src="<%=request.getContextPath()%>/xava/images/home.gif"></a>
     </span>
   	<span id="menuPowerByMP">
-
+Buscador de Coros y Recursos Corales
 	</span>		
 </div>
 
@@ -27,17 +27,8 @@
       BuscaCoro
       </a>
 	  <ul class="submenu">
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Ciudad" >Ciudad</a></li>
-        <!--<li><hr color="black"></li>-->
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Coro" >Coro</a></li>
-        <!--<li><hr color="black"></li>-->
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Pais" >Pais</a></li>
-        <!--<li><hr color="black"></li>-->
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Provincia" >Provincia</a></li>
-        <!--<li><hr color="black"></li>-->
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Recurso" >Recurso</a></li>
-        <!--<li><hr color="black"></li>-->
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=Tipo" >Tipo</a></li>
+        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaCoro" >Coro</a></li>
+        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaRecurso" >Recurso Coral</a></li>
 	  </ul>
 	</li>
 <!-- views -->

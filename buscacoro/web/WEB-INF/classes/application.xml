@@ -1,53 +1,41 @@
-<application name="buscacoro"> 
-	
-	<!-- 
-	A default module for each entity is assumed with the
-	controllers on <default-module/>
-	-->
-	
-	<default-module>		  
-		<controller name="Typical"/>
-		<controller name="FiltroSimple"/>
+<application name="buscacoro">
+
+	<!-- A default module for each entity is assumed with the controllers on 
+		<default-module/> -->
+
+	<default-module>
+		<controller name="Typical" />
+		<controller name="FiltroSimple" />
 	</default-module>
-	
-  
 
-    <!-- statement driven development SDD -->
+	<module name="ConsultaCoro">
+		<model name="Coro" />
+		<view name="consulta" />
+		<tab name="consulta" />
+		<env-var name="XAVA_SEARCH_ACTION" value="CRUD.searchReadOnly" />
+		<controller name="Print" />
+	</module>
 
-	<!-- transfer entities -->
-
-	<!-- functions -->
-		
+	<module name="ConsultaRecurso">
+		<model name="Recurso" />
+		<view name="consulta" />
+		<tab name="consulta" />
+		<env-var name="XAVA_SEARCH_ACTION" value="CRUD.searchReadOnly" />
+		<controller name="Print" />
+	</module>
 
 
 </application>
 
-<!--
-	 Copyright (c) minuteproject, minuteproject@gmail.com
-	 All rights reserved.
-	 
-	 Licensed under the Apache License, Version 2.0 (the "License")
-	 you may not use this file except in compliance with the License.
-	 You may obtain a copy of the License at
-	 
-	 http://www.apache.org/licenses/LICENSE-2.0
-	 
-	 Unless required by applicable law or agreed to in writing, software
-	 distributed under the License is distributed on an "AS IS" BASIS,
-	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 See the License for the specific language governing permissions and
-	 limitations under the License.
-	 
-	 More information on minuteproject:
-	 twitter @minuteproject
-	 wiki http://minuteproject.wikispaces.com 
-	 blog http://minuteproject.blogspot.net
-	 
--->
-<!--
-	 template reference : 
-	 - Minuteproject version : 0.8.7
-	 - name      : ApplicationXml
-	 - file name : ApplicationXmlOX.vm
-	 - time      : 2014/07/25 AD at 12:01:13 ART
--->
+<!-- Copyright (c) minuteproject, minuteproject@gmail.com All rights reserved. 
+	Licensed under the Apache License, Version 2.0 (the "License") you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. More information 
+	on minuteproject: twitter @minuteproject wiki http://minuteproject.wikispaces.com 
+	blog http://minuteproject.blogspot.net -->
+<!-- template reference : - Minuteproject version : 0.8.7 - name : ApplicationXml 
+	- file name : ApplicationXmlOX.vm - time : 2014/07/25 AD at 12:01:13 ART -->
