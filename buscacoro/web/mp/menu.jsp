@@ -22,15 +22,15 @@ Buscador de Coros y Recursos Corales
 <div id="searchbar">
 <div class="menustyle" id="menu">
   <ul class="menubar" id="dmenu">
-    <li class="topitem">
-      <a href="#" onclick="return false;">
-      BuscaCoro
-      </a>
-	  <ul class="submenu">
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaCoro" >Coro</a></li>
-        <li><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaRecurso" >Recurso Coral</a></li>
-	  </ul>
-	</li>
+<!--     <li class="topitem"> -->
+<!--       <a href="#" onclick="return false;"> -->
+<!--       BuscaCoro -->
+<!--       </a> -->
+<!-- 	  <ul class="submenu"> -->
+        <li class="topitem"><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaCoro" >Coro</a></li>
+        <li class="topitem"><a href="<%=request.getContextPath()%>/xava/home.jsp?application=buscacoro&module=ConsultaRecurso" >Recurso Coral</a></li>
+<!-- 	  </ul> -->
+<!-- 	</li> -->
 <!-- views -->
 <!-- transfer entities -->
 
