@@ -24,10 +24,10 @@ if (request.getAttribute("style") == null) {
 		<%@ include file="mp/menu.jsp"%>
 	</div>
 	<div id="informacion">
-	<h1>!Feliz Cumplea&ntilde;os Pap&aacute;!</h1>
+	<h1>!Para buscar</h1>
 	<p>&nbsp;&nbsp;El Gran Buscador de Coros y Recursos Corales.</p>
 	<p>&nbsp;&nbsp;Use el men&uacute; superior para acceder a buscar Coros o Recursos Corales.</p>
-	<p>&nbsp;&nbsp;Para agregar su coro o recurso contactese con <a href="mailto:gabriel.tandil@gmail.com">el administrador</a>.</p>
+	<p>&nbsp;&nbsp;Para agregar su coro o recurso contactese con <a href="mailto:eccomdp@yahoo.com.ar">el administrador</a>.</p>
 	</div>
 	<div id="content">
 		<%@ include file="mp/footer.jsp"%>
