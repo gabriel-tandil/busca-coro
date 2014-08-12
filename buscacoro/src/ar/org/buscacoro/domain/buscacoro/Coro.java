@@ -52,8 +52,7 @@ public class Coro {
 	@DescriptionsList(depends="provincia, pais", condition="${provincia.id} = ? and ${provincia.pais.id} = ? ")	
 	private Ciudad ciudad;
 
-	@Column(name = "contacto", length = 100, nullable = false, unique = false)
-	@Required
+	@Column(name = "contacto", length = 100, unique = false)
 	private String contacto;
 
 	@Column(name = "demo", nullable = false, unique = false)
@@ -69,8 +68,7 @@ public class Coro {
     @Stereotype("TEXT_AREA")	
 	private String detalle;
 
-	@Column(name = "email", length = 100, nullable = false, unique = false)
-	@Required
+	@Column(name = "email", length = 100, unique = false)
     @Stereotype("EMAIL")	
 	private String email;
 
@@ -105,8 +103,7 @@ public class Coro {
 	@JoinColumn(name = "tipo", referencedColumnName = "id", nullable = false, unique = false)
 	private Tipo tipo;
 
-	@Column(name = "web", length = 250, nullable = false, unique = false)
-	@Required
+	@Column(name = "web", length = 250, unique = false)
     @Stereotype("WEBURL")
 	private String web;
 
